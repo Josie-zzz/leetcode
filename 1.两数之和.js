@@ -23,7 +23,8 @@ let _twoSum = function (nums, target) {
 
 // @lc code=start
 /**
- * 使用hash map方法
+ * 优雅解法：使用hash map方法
+ * 时间复杂度：O(n)
  * @param {number[]} nums
  * @param {number} target
  * @return {number[]}
