@@ -5,8 +5,9 @@
  */
 
 /**
- * 暴力解法：依次遍历每一项，之和想加等于target则返回
+ * 暴力解法：依次遍历每一项，之和相加等于target则返回。【最简单最暴力的解法】
  * 时间复杂度：O(n^2)
+ * 空间复杂度：O(1)
  * @param {number[]} nums
  * @param {number} target
  * @return {number[]}
@@ -23,8 +24,10 @@ let _twoSum = function (nums, target) {
 
 // @lc code=start
 /**
- * 优雅解法：使用hash map方法
+ * 优雅解法：使用hash map方法，依次遍历每个元素，用target - 当前元素，如果在hash对象中找不到就存进去，否则就返回。
+ * 暴力解法时间复杂度较高的原因是寻找 target - x 的时间复杂度过高，使用哈希表，可以将寻找 target - x 的时间复杂度降低到从 O(N) 降低到 O(1)。
  * 时间复杂度：O(n)
+ * 空间复杂度：O(n) 【hash表的开销】
  * @param {number[]} nums
  * @param {number} target
  * @return {number[]}
