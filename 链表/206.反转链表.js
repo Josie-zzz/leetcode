@@ -56,4 +56,3 @@ var reverseList = function (head) {
 }
 
 // @lc code=end
-

@@ -10,6 +10,7 @@ class DoublyNode extends LinkNode {
 
 class DoublyLinkedList extends LinkedList {
     constructor() {
+        super()
         // 增加一个尾指针
         this.tail = null
     }
@@ -106,3 +107,13 @@ class DoublyLinkedList extends LinkedList {
         return element
     }
 }
+
+console.log('-----')
+const link = new DoublyLinkedList()
+link.push(9,5,10)
+link.insert(1, 0)
+console.log(link.toArray())
+link.insert(99, 2)
+console.log(link.toArray())
+// debugger
+console.log(link)

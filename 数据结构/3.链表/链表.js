@@ -179,7 +179,7 @@ console.log(link.size())
 // console.log(link.remove(6), link.toArray())
 console.log(link.removeAt(5), link.toArray())
 
-module.export = {
+module.exports = {
     LinkNode,
     LinkedList
 }
