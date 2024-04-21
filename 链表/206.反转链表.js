@@ -55,4 +55,23 @@ var reverseList = function (head) {
     return fn(head, null)
 }
 
+// 2024.4.8 递归解法
+var reverseList = function (head) {
+    let newHead = head
+    const getNewList = node => {
+        if(node) {
+            const next = getNewList(node.next)
+            node.next = null
+            if(next) {
+                next.next = node
+            } else {
+                newHead = node
+            }
+        }
+        return node
+    }
+    getNewList(head)
+    return newHead
+}
+
 // @lc code=end

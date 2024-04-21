@@ -40,21 +40,26 @@ var inorderTraversal = function(root) {
  * @param {TreeNode} root
  * @return {number[]}
  */
-var inorderTraversal = function(root) {
+const inorderTraversal = (head) => {
+    const result = []
+    // 使用栈来存储
     const stack = []
-    const arr = []
-    let p = root
+    let p = head
+    // 如果 p 指针还在或者栈内还有元素就继续
     while(p || stack.length) {
-        if (p) {
+        // 深度优先，如果 p 在的话就加入栈中待探索
+        if(p) {
             stack.push(p)
             p = p.left
         } else {
+            // 如果 p 不在，说明 p 已经到叶子了，那就 pop 栈中的元素访问
+            // 因为栈中存的都是根节点或者说是左节点，所以符合预期，然后在修改 p 指针指向右节点
             const node = stack.pop()
-            arr.push(node.val)
+            result.push(node.val)
             p = node.right
         }
     }
-    return arr
-};
+    return result
+}
 // @lc code=end
 
