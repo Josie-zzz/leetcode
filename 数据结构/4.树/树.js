@@ -19,7 +19,7 @@ class TreeNode {
                     return
                 }
                 // 为 null 的情况
-                if(!arr[idx]) {
+                if(arr[idx] === null || arr[idx] === undefined) {
                     return arr[idx]
                 }
                 const node = new Node(arr[idx])
@@ -43,10 +43,10 @@ class TreeNode {
     }
 }
 
-const tree = new TreeNode()
-const tree2 = tree.createTree([1,null,2])
+// const tree = new TreeNode()
+// const tree2 = tree.createTree([1,null,2])
 // debugger
-console.log(tree2)
+// console.log(tree2)
 
 module.exports = {
     TreeNode
