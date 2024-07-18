@@ -4,50 +4,48 @@
  * [20] 有效的括号
  */
 
+// @lc code=start
 // 右边对应的左边
-const rightMapLeft = new Map([
-    [')', '('],
-    [']', '['],
-    ['}', '{'],
+const map = new Map([
+    ['(', ')'],
+    ['[', ']'],
+    ['{', '}'],
 ])
-
-// 左边对应右边
-const leftMapRight = new Map()
-leftMapRight.set('(', ')')
-leftMapRight.set('[', ']')
-leftMapRight.set('{', '}')
+// 右边的括号
+const right = Array.from(map.values())
 
 // @lc code=start
 /**
  * @param {string} s
  * @return {boolean}
  */
-var isValid = function(s) {
+var isValid = function (s) {
     const stack = []
-    if(s.length) {
-        for (let i = 0; i < s.length; i++) {
-            // 如果是左边符号，压入栈中
-            if(leftMapRight.has(s[i])) {
-                stack.push(s[i])
-                continue
-            }
-            // 如果是右边符号，就出栈比较
-            if(rightMapLeft.has(s[i])) {
-                const value = stack.pop()
-                // 匹配就继续，不匹配直接返回 false
-                if(rightMapLeft.get(s[i]) === value) {
-                    continue
-                } else {
-                    return false
-                }
+    let p = 0
+    while (p < s.length) {
+        // 如果是左边符号，压入栈中
+        if (map.has(s[p])) {
+            stack.push(s[p])
+        }
+        // 如果是右边符号，就出栈比较
+        if (right.includes(s[p])) {
+            const value = stack.pop()
+            // 不匹配直接返回 false
+            if (map.get(value) !== s[p]) {
+                return false
             }
         }
+        p ++
     }
     // 遍历完了，栈内还有，说明没有成对匹配
-    if(stack.length) {
+    if (stack.length) {
         return false
     }
     return true
 };
 // @lc code=end
-isValid('(]')
+
+console.log(isValid("()"))
+console.log(isValid("([)]"))
+console.log(isValid("()[]"))
+console.log(isValid("([{}])"))
