@@ -16,6 +16,7 @@ const right = Array.from(map.values())
 
 // @lc code=start
 /**
+ * 这是利用栈来解决的问题
  * @param {string} s
  * @return {boolean}
  */

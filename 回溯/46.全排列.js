@@ -15,21 +15,24 @@ var permute = function(nums) {
     const result = []
     // 保存结果
     const stack = []
-    // stack 访问栈，line 是当前组合的结果
+    // visitArr 就是可以做选择的列表
     const findResult = (visitArr) => {
+        // 如果没有选择可以做了，说明到底了，就将结果存起来
         if(!visitArr.length) {
+            // 一般都需要复制下，时间复杂度是 O(n)
             result.push([...stack])
             return
         }
-        // 遍历数组
+        // 遍历可以做选择的数据，也就是当前这个位置可以做的选择
         for(let i = 0; i < visitArr.length; i++) {
             const ele = visitArr[i]
-            // 复制剩下的可能，继续遍历
+            // 复制剩下的可能，继续递归遍历，逐级减少
             const arr = visitArr.filter(v => v !== ele)
-            // 压栈
+            // 将当前做的选择压入到栈中
             stack.push(ele)
+            // 继续做下一级的选择
             findResult(arr)
-            // 操作完出栈
+            // 当子节点的可能都遍历完后，就回退到这一级，撤销刚才的选择，继续做下一个选择
             stack.pop()
         }
     }
