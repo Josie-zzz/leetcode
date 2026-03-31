@@ -33,3 +33,27 @@ var productExceptSelf = function(nums) {
 };
 // @lc code=end
 
+/**
+ * 2026,3,27 第二次做这个题，思路后面也是想了下突然开窍哈哈哈哈
+ * 发现之前也是这样想的
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var productExceptSelf2 = function(nums) {
+    const arr1 = []
+    const arr2 = []
+    let all = 1
+    for(let i = 0; i < nums.length; i++) {
+      arr1[i] = all
+      all = arr1[i] * nums[i]
+    }
+    all = 1
+    for(let i = nums.length - 1; i >= 0; i--) {
+      arr2[i] = all
+      all = arr2[i] * nums[i]
+    }
+    return arr1.map((v, i) => v * arr2[i])
+};
+
+console.log(productExceptSelf([1,2,3,4]))
+console.log(productExceptSelf([-1,1,0,-3,3]))

@@ -97,3 +97,30 @@ console.log(isSubsequence("axc", "ahbgdc"))
 console.log(isSubsequence("b", "c"))
 console.log(isSubsequence("aaaaaa", "bbaaaa"))
 console.log(isSubsequence("bb", "ahbgdc"))
+
+
+/**
+ * 2026.3.30
+ * 看到的一瞬间想到了map，但是一看在双指针的分类里面，一下就get到了，1min敲完了，直接ac
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+var isSubsequence = function(s, t) {
+  if(s.length > t.length) {
+    return false
+  }
+  let a = 0, b = 0
+  while(b < t.length) {
+    if(s[a] === t[b]) {
+      a ++
+      b ++
+    } else {
+      b ++
+    }
+  }
+  if(a < s.length){
+    return false
+  }
+  return true
+};

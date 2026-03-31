@@ -54,3 +54,30 @@ var moveZeroes2 = function(nums) {
 };
 // debugger
 console.log(moveZeroes2([1,0,1]))
+
+
+/**
+ * 2026.3.30 做的，看到这个题在双指针的分类里面，所以一下就做出来了，差不多2min吧
+ * 看了之前的记录，还挺逗的哈哈哈
+ * @param {number[]} nums
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+var moveZeroes = function(nums) {
+    // left是需要操作的位置，right是探索的位置
+    let left = 0, right = 0
+    while(right < nums.length) {
+        // 如果不为0就赋值，为0就继续探索
+        if(nums[right] != 0) {
+            nums[left] = nums[right] 
+            left ++
+            right ++
+        } else {
+            right ++
+        }
+    }
+    // 最后把剩下的全部设置为0就行了
+    while(left < nums.length) {
+        nums[left] = 0
+        left ++
+    }
+};
