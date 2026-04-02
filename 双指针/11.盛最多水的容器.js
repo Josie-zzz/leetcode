@@ -56,3 +56,27 @@ console.log(maxArea([1,1]))
 console.log(maxArea([1,8,6,2,5,4,8,3,7]))
 
 
+
+/**
+ * 2026.3.31
+ * 这个题我知道用双指针来做，也有点印象该怎么做，但是没想明白，看了题解才想明白，还是官方题解聪明！！！
+ * 他就是不断地缩短宽度来找到最大的容器，具体逻辑还是看官网吧，这里不记录了
+ * @param {number[]} height
+ * @return {number}
+ */
+var maxArea = function(height) {
+    let max = 0
+    let left = 0, right = height.length - 1
+    while(left < right) {
+      const value = Math.min(height[left], height[right]) * (right - left)
+      max = Math.max(max, value)
+
+      // 挪动高度低的那一方
+      if(height[left] < height[right]) {
+        left ++
+      } else {
+        right --
+      }
+    }
+    return max
+};
