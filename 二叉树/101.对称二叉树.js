@@ -49,7 +49,26 @@ var isSymmetric = function(root) {
     }
     return true
 };
+
+// 分别将树的两半深度优先遍历，左边顺序：中左右，右边：中右左，最后拼接输出就行
+isSymmetric = function(root) {
+    const left = []
+    const right = []
+    const findNode = (node, one, two, arr) => {
+        arr.push(node ? node.val : null)
+        if(node === null) {
+            return
+        }
+        findNode(node[one], one, two, arr)
+        findNode(node[two], one, two, arr)
+    }
+    findNode(root.left, 'left', 'right', left)
+    findNode(root.right, 'right', 'left', right)
+    return left.join() === right.join()
+};
 // @lc code=end
 const { TreeNode } = require('../数据结构/4.树/树')
-const root = new TreeNode().createTree([2,3,3,4,5,5,4,null,null,8,9,null,null,9,8])
-isSymmetric(root)
+// const root = new TreeNode().createTree([2,3,3,4,5,5,4,null,null,8,9,null,null,9,8])
+// console.log(isSymmetric(root))
+const root = new TreeNode().createTree([1,2,3])
+console.log(isSymmetric(root))

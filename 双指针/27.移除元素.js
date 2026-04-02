@@ -38,3 +38,29 @@ var removeElement = function(nums, val) {
 };
 // @lc code=end
 
+removeElement = function(nums, val) {
+    // 双指针，从两头出发
+    let p1 = 0
+    let p2 = nums.length - 1
+    while(p1 <= p2) {
+        // 如果相等就把这个值交换到后面去
+        if(nums[p1] === val) {
+            // 交换的时候注意避开重复的数，注意不要超过p1了
+            while(nums[p2] === val && p2 > p1) {
+                p2 --
+            }
+            const t = nums[p1]
+            nums[p1] = nums[p2]
+            nums[p2] = t
+            p1++
+            p2--
+        } else {
+            p1 ++
+        }
+    }
+    console.log(nums)
+    return p2 + 1
+};
+// console.log(removeElement([3,2,2,3], 3))
+// console.log(removeElement([0,1,2,2,3,0,4,2], 2))
+console.log(removeElement([3,3], 3))

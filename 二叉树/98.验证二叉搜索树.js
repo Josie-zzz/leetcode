@@ -48,6 +48,24 @@ var isValidBST = function(root) {
 
     return true
 };
+// 递归版本 - 中序遍历是递增数组
+isValidBST = function(root) {
+    let flag = true
+    const search = (node) => {
+        if(!node || !flag) {
+            return node
+        }
+        const left = search(node.left)
+        const right = search(node.right)
+        if(left && left.val >= node.val || right && right.val < node.val) {
+            flag = false
+        }
+
+        return node
+    }
+    search(root)
+    return flag
+};
 // @lc code=end
 
 const { TreeNode } = require('../数据结构/4.树/树')
